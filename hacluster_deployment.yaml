@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webshop-deployment
+  name: hacluster-deployment
   labels:
-    app: webshop
+    app: hacluster
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webshop
+      app: hacluster
   template:
     metadata:
       labels:
-        app: webshop
+        app: hacluster
     spec:
       containers:
-      - name: webshop
-        image: dimilan/webshop
-        imagePullPolicy: Always
+      - name: hacluster
+        image: dimilan/hacluster:v1.0
         ports:
         - containerPort: 80

@@ -1,0 +1,22 @@
+#Template from https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment            # Type of Kuberntes resource
+metadata:                   # Metadata for deployment
+  name: nginx-deployment    # Deployment name => will be displayed by the "kubectl get deployments" command
+  labels:
+    app: nginx              # Deployment labels key/value pairs
+spec:                       # Defines the desired state of the Deployment, including the number of replicas, the pod template, and any other related specifications.
+  replicas: 3               # Specifies that you want to run three replicas of your application.
+  selector: nginx           # Specifies the labels that the Replica Set uses to select the pods it should manage.
+    matchLabels:
+      app: nginx
+  template:                 # Contains the pod template used for creating new pods, including container specifications, image names, and container ports.
+    metadata:               # Contains the labels to apply to the pods created from this template. 
+      labels:               #
+        app: nginx          # In this case, the pods will have the label app: nginx.
+    spec:                   # Describes the specification of the pods.
+      containers:           # This section specifies the containers to run in the pod.
+      - name: nginx         # Assigns a name to the container.
+        image: nginx:1.14.2 # Specifies the Docker image to use for this container.
+        ports:              # Defines the ports to open in the container.
+        - containerPort: 80 # Indicates that the container will listen on port 80.

@@ -1,0 +1,13 @@
+# Template from https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1          # Version number
+kind: Service           # Type of Kubernetes resource: Service
+metadata:               # Servic metadata
+  name: nginx-service   # Name of the service, displaye on "kubectl get svc" command
+spec:                   # Service specifications
+  type: ClusterIP       # Type of Service. ClusterIP = internal, NodePort = external. See ../docs/service-types.png
+  selector:             # Selector indicates to what pods this service applies
+    name: nginx         # Name of the pods for whom this service applies. Needs to be identical in the deployment
+  ports:
+    - protocol: TCP     # Communication protocol. Can be omitted. 
+      port: 80          # Port on wich the service is available
+      targetPort: 80    # Port where the app is reachable in the pods. Needs to be the same as the port in the deployment.
