@@ -8,12 +8,12 @@ metadata:                   # Metadata for deployment
 spec:                       # Defines the desired state of the Deployment, including the number of replicas, the pod template, and any other related specifications.
   replicas: 3               # Specifies that you want to run three replicas of your application.
   selector: nginx           # Specifies the labels that the Replica Set uses to select the pods it should manage.
-    matchLabels:
-      app: nginx
+    matchLabels:            # Defines what pods associate with the deployment
+      app: nginx            # All the pods with this label belong to this deployment
   template:                 # Contains the pod template used for creating new pods, including container specifications, image names, and container ports.
     metadata:               # Contains the labels to apply to the pods created from this template. 
       labels:               #
-        app: nginx          # In this case, the pods will have the label app: nginx.
+        app: nginx          # In this case, the pods will have the label app: nginx. This is also used for the service selector.
     spec:                   # Describes the specification of the pods.
       containers:           # This section specifies the containers to run in the pod.
       - name: nginx         # Assigns a name to the container.
