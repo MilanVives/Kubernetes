@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hacluster
-        image: dimilan/hacluster:v1.0
+        image: dimilan/hacluster:v2.0 #v2.0 = x86 v1.0=ARM latest = x86
         ports:
         - containerPort: 80
